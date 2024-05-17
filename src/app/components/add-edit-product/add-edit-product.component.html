@@ -1,0 +1,98 @@
+<div class="bg-[#F9FAFB] h-screen flex items-center">
+  <app-spinner *ngIf="loading"></app-spinner>
+  <div *ngIf="!loading" class="h-max mx-auto flex flex-col items-center">
+    <h1 class="text-xl font-bold text-center pb-6">{{ operation }} Producto</h1>
+    <form
+      [formGroup]="form"
+      (ngSubmit)="addProduct()"
+      class="bg-white shadow-xl p-10 flex flex-col gap-4 text-sm"
+    >
+      <div>
+        <input
+          class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-[#FF416C]"
+          placeholder="Ingrese nombre"
+          type="text"
+          formControlName="name"
+          required
+        />
+        <span
+          *ngIf="
+            form.get('name')?.hasError('required') && form.get('name')?.touched
+          "
+          >Campo requerido</span
+        >
+      </div>
+      <div>
+        <input
+          class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-[#FF416C]"
+          placeholder="Ingrese Precio"
+          type="number"
+          formControlName="price"
+          required
+        />
+        <span
+          *ngIf="
+            form.get('price')?.hasError('required') &&
+            form.get('price')?.touched
+          "
+          >Campo requerido</span
+        >
+      </div>
+      <div>
+        <input
+          class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-[#FF416C]"
+          required
+          type="text"
+          formControlName="description"
+          placeholder="Ingrese descripcion"
+        />
+        <span
+          *ngIf="
+            form.get('description')?.hasError('required') &&
+            form.get('description')?.touched
+          "
+          >Campo requerido</span
+        >
+      </div>
+      <div>
+        <input
+          class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-[#FF416C]"
+          type="number"
+          formControlName="grams"
+          placeholder="Ingrese gramos"
+        />
+        <span
+          *ngIf="
+            form.get('grams')?.hasError('required') &&
+            form.get('grams')?.touched
+          "
+          >Campo requerido</span
+        >
+      </div>
+      <div>
+        <input
+          class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-[#FF416C]"
+          type="number"
+          formControlName="stock"
+          placeholder="Ingrese stock"
+        />
+        <span
+          *ngIf="
+            form.get('stock')?.hasError('required') &&
+            form.get('stock')?.touched
+          "
+          >Campo requerido</span
+        >
+      </div>
+
+      <div>
+        <button
+          class="bg-[#FF416C] w-full py-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#c7123c]"
+          type="submit"
+        >
+          {{ operation }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

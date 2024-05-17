@@ -1,0 +1,89 @@
+<div class="flex justify-center items-center h-screen">
+  <div
+    class="flex w-[768px] h-[496px] mt-[5rem] animate-fade animate-once animate-duration-700 animate-delay-100 animate-ease-linear justify-center"
+  >
+    <div class="w-1/2 relative hidden lg:block">
+      <div
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white w-[90%] z-10"
+      >
+        <h1 class="text-3xl font-black">Bienvenido/a</h1>
+        <p class="leading-[20px] tracking-[0.5px] text-[14px] my-[20px]">
+          Ingrese su información personal para continuar
+        </p>
+      </div>
+      <div
+        class="h-full w-full object-cover rounded-l-xl shadow-[0_35px_35px_rgba(0,0,0,0.25)] brightness-75 bg-[#FF416C]"
+      ></div>
+    </div>
+    <form
+      class="lg:w-1/2 bg-gray-100 p-8 flex flex-col text-center justify-center items-center rounded-xl lg:rounded-r-xl lg:rounded-l-none shadow-[0_35px_35px_rgba(0,0,0,0.25)] w-[70%]"
+      [formGroup]="signUpForm"
+      (ngSubmit)="addUser()"
+    >
+      <h2 class="sm:text-3xl text-2xl font-black mb-6">Cree una cuenta</h2>
+      <div class="gap-2">
+        <div class="mt-4">
+          <input
+            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-[#FF416C]"
+            type="text"
+            placeholder="Ingrese email"
+            formControlName="email"
+            required
+          />
+        </div>
+        <div class="mt-4">
+          <input
+            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-[#FF416C]"
+            type="password"
+            placeholder="Ingrese minimo 6 caracteres"
+            formControlName="password"
+            required
+          />
+        </div>
+        <div class="mt-4">
+          <input
+            class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-[#FF416C]"
+            type="password"
+            placeholder="Repita contraseña"
+            formControlName="confirmPassword"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="space-y-4 mt-4 flex flex-col justify-center text-center">
+        <div>
+          <button
+            [ngClass]="{
+              'bg-[#FF416C]': signUpForm.valid,
+              'bg-gray-400 cursor-not-allowed': signUpForm.invalid
+            }"
+            class="min-w-[9rem] max-w-[9rem] duration-200 font-bold py-2 px-4 rounded-[20px] focus:outline-none focus:shadow-outline text-white"
+            type="submit"
+            [disabled]="signUpForm.invalid"
+          >
+            Registrarse
+          </button>
+        </div>
+
+        <div
+          class="mt-4 text-[#333] leading-[20px] tracking-[0.5px] text-[14px]"
+        >
+          ¿Ya posee una cuenta?
+        </div>
+
+        <div>
+          <button
+            class="min-w-[9rem] max-w-[9rem] bg-[#FF416C] p-[1px] duration-200 rounded-[20px]"
+          >
+            <div
+              class="bg-white hover:bg-slate-100 duration-200 font-semibold h-full w-full px-4 py-2 rounded-[20px]"
+            >
+              <a routerLink="/login">Ingresar</a>
+            </div>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
